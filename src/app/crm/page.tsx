@@ -453,7 +453,14 @@ function CrmPageContent() {
     return names.length > 0 ? names.join(", ") : null;
   }, [iso3Param]);
 
-  const listHeight = 560;
+  const [listHeight, setListHeight] = useState(480);
+  useEffect(() => {
+    const update = () => setListHeight(Math.max(240, window.innerHeight - 320));
+    update();
+    window.addEventListener("resize", update);
+    return () => window.removeEventListener("resize", update);
+  }, []);
+
   const itemData = useMemo(
     () => ({ list: sortedEnriched, visibleColumns }),
     [sortedEnriched, visibleColumns]
@@ -468,22 +475,31 @@ function CrmPageContent() {
 
   return (
     <main className="min-h-screen bg-background">
-      <div className="mx-auto max-w-[1600px] px-4 py-10 sm:px-6 lg:px-8">
-        <header className="mb-section-lg">
+      <div className="mx-auto max-w-[1600px] px-4 py-6 sm:py-10 sm:px-6 lg:px-8">
+        <header className="mb-6 sm:mb-10">
           <div className="flex items-center justify-between gap-4">
             <div>
-              <h1 className="font-serif text-display-sm text-primary">CRM</h1>
-              <p className="mt-2 text-body text-primary-muted">
-                <span className="italic text-accent">Employees</span> — Sales &
-                Groups Directory
+              <h1 className="font-serif text-2xl sm:text-display-sm text-primary">CRM</h1>
+              <p className="mt-1 sm:mt-2 text-body text-primary-muted">
+                <span className="italic text-accent">Employees</span> — Sales &amp; Groups Directory
               </p>
             </div>
             <button
               type="button"
-              className="lg:hidden rounded-md border border-border bg-background-elevated px-3 py-2 text-body-sm text-primary hover:bg-background-surface transition-colors"
+              className="lg:hidden flex items-center gap-2 border border-border bg-background-elevated px-4 py-2.5 text-body-sm text-primary hover:bg-background-surface transition-colors min-h-[44px]"
               onClick={() => setSidebarOpen((o) => !o)}
             >
-              {sidebarOpen ? "Hide filters" : "Filters"}
+              <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.5">
+                <line x1="2" y1="4" x2="14" y2="4" />
+                <line x1="4" y1="8" x2="12" y2="8" />
+                <line x1="6" y1="12" x2="10" y2="12" />
+              </svg>
+              {sidebarOpen ? "Hide" : "Filters"}
+              {hasActiveFilters && (
+                <span className="flex h-4 w-4 items-center justify-center rounded-full bg-accent text-[9px] text-[#0a0a0a] font-bold">
+                  {countryFilter.set.size + cityFilter.set.size + hotelFilter.set.size + categoryFilter.set.size}
+                </span>
+              )}
             </button>
           </div>
         </header>
@@ -580,7 +596,7 @@ function CrmPageContent() {
                       <button
                         key={cat}
                         type="button"
-                        className={`flex-1 rounded-sm border px-3 py-1.5 text-body-sm transition-all ${
+                        className={`flex-1 rounded-sm border px-3 py-2.5 text-body-sm transition-all min-h-[44px] ${
                           active
                             ? "border-accent bg-accent/10 text-accent"
                             : "border-border bg-background text-primary-muted hover:border-border-strong hover:text-primary"
@@ -652,7 +668,7 @@ function CrmPageContent() {
                         aria-hidden
                         onClick={() => setColumnsDropdownOpen(false)}
                       />
-                      <div className="absolute right-0 top-full z-20 mt-1.5 min-w-[180px] rounded-md border border-border bg-background-elevated py-1.5 shadow-lg shadow-black/30">
+                      <div className="absolute right-0 top-full z-20 mt-1.5 w-48 max-h-[60vh] overflow-y-auto rounded-md border border-border bg-background-elevated py-1.5 shadow-lg shadow-black/30">
                         {COLUMN_IDS.map((id) => (
                           <button
                             key={id}
@@ -698,43 +714,45 @@ function CrmPageContent() {
                 </div>
               </div>
 
-              {/* Table header + body */}
-              <div className="flex flex-col">
-                <div
-                  className="flex w-full border-b-2 border-border"
-                  role="row"
-                  style={{ background: "var(--table-header-bg)" }}
-                >
-                  {visibleColumns.map((id) => (
-                    <button
-                      key={id}
-                      type="button"
-                      className="flex items-center gap-1 px-4 py-3 text-left font-mono uppercase text-primary-muted hover:text-primary cursor-pointer border-0 bg-transparent transition-colors overflow-hidden"
-                      style={{
-                        fontSize: "10px",
-                        letterSpacing: "0.15em",
-                        flex: `${COLUMN_WIDTHS[id]} 1 0`,
-                        minWidth: 0,
-                      }}
-                      onClick={() => handleHeaderClick(id)}
-                    >
-                      <span className="truncate">{COLUMN_LABELS[id]}</span>
-                      {sortKey === id && (
-                        <span className="text-accent shrink-0">
-                          {sortDir === "asc" ? " ↑" : " ↓"}
-                        </span>
-                      )}
-                    </button>
-                  ))}
+              {/* Table header + body — scrollable horizontally on mobile */}
+              <div className="overflow-x-auto">
+                <div style={{ minWidth: "480px" }}>
+                  <div
+                    className="flex border-b-2 border-border"
+                    role="row"
+                    style={{ background: "var(--table-header-bg)" }}
+                  >
+                    {visibleColumns.map((id) => (
+                      <button
+                        key={id}
+                        type="button"
+                        className="flex items-center gap-1 px-4 py-3 text-left font-mono uppercase text-primary-muted hover:text-primary cursor-pointer border-0 bg-transparent transition-colors overflow-hidden"
+                        style={{
+                          fontSize: "10px",
+                          letterSpacing: "0.15em",
+                          flex: `${COLUMN_WIDTHS[id]} 1 0`,
+                          minWidth: `${COLUMN_WIDTHS[id] * 0.5}px`,
+                        }}
+                        onClick={() => handleHeaderClick(id)}
+                      >
+                        <span className="truncate">{COLUMN_LABELS[id]}</span>
+                        {sortKey === id && (
+                          <span className="text-accent shrink-0">
+                            {sortDir === "asc" ? " ↑" : " ↓"}
+                          </span>
+                        )}
+                      </button>
+                    ))}
+                  </div>
+                  <List<RowPropsData>
+                    rowComponent={Row}
+                    rowCount={sortedEnriched.length}
+                    rowHeight={ROW_HEIGHT}
+                    rowProps={itemData}
+                    overscanCount={10}
+                    style={{ height: listHeight, overflowX: "hidden", overflowY: "auto", width: "100%" }}
+                  />
                 </div>
-                <List<RowPropsData>
-                  rowComponent={Row}
-                  rowCount={sortedEnriched.length}
-                  rowHeight={ROW_HEIGHT}
-                  rowProps={itemData}
-                  overscanCount={10}
-                  style={{ height: listHeight, overflowX: "hidden", overflowY: "auto" }}
-                />
               </div>
 
               {/* Table footer */}

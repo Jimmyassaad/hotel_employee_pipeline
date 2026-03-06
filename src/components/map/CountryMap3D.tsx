@@ -218,15 +218,15 @@ export function CountryMap3D({ cities }: CountryMap3DProps) {
     [cities]
   );
 
-  const handleMouseEnter = useCallback(
-    (entry: CityMapEntry, e: React.MouseEvent) => {
+  const showTooltipForEntry = useCallback(
+    (entry: CityMapEntry, clientX: number, clientY: number) => {
       const rect = containerRef.current?.getBoundingClientRect();
       if (!rect) return;
       setHoveredCity(entry.city);
       setTooltip({
         show: true,
-        x: e.clientX - rect.left,
-        y: e.clientY - rect.top,
+        x: clientX - rect.left,
+        y: clientY - rect.top,
         city: entry.city,
         country: entry.country,
         total: entry.total,
@@ -235,6 +235,13 @@ export function CountryMap3D({ cities }: CountryMap3DProps) {
       });
     },
     []
+  );
+
+  const handleMouseEnter = useCallback(
+    (entry: CityMapEntry, e: React.MouseEvent) => {
+      showTooltipForEntry(entry, e.clientX, e.clientY);
+    },
+    [showTooltipForEntry]
   );
 
   const handleMouseMove = useCallback(
@@ -254,6 +261,20 @@ export function CountryMap3D({ cities }: CountryMap3DProps) {
     setHoveredCity(null);
     setTooltip(INITIAL_TOOLTIP);
   }, []);
+
+  const handleTouchStart = useCallback(
+    (entry: CityMapEntry, e: React.TouchEvent) => {
+      e.preventDefault();
+      const touch = e.touches[0];
+      if (hoveredCity === entry.city) {
+        setHoveredCity(null);
+        setTooltip(INITIAL_TOOLTIP);
+      } else {
+        showTooltipForEntry(entry, touch.clientX, touch.clientY);
+      }
+    },
+    [hoveredCity, showTooltipForEntry]
+  );
 
   const vw = MAP_WIDTH / zoom;
   const vh = MAP_HEIGHT / zoom;
@@ -300,6 +321,7 @@ export function CountryMap3D({ cities }: CountryMap3DProps) {
               onMouseEnter={(e) => handleMouseEnter(entry, e)}
               onMouseMove={(e) => handleMouseMove(entry, e)}
               onMouseLeave={handleMouseLeave}
+              onTouchStart={(e) => handleTouchStart(entry, e)}
               style={{ cursor: "pointer" }}
             >
               <circle
@@ -341,7 +363,7 @@ export function CountryMap3D({ cities }: CountryMap3DProps) {
         <button
           type="button"
           onClick={handleFullscreen}
-          className="flex h-8 w-8 items-center justify-center rounded-sm transition-colors"
+          className="flex h-11 w-11 items-center justify-center rounded-sm transition-colors"
           style={{ background: "#1a1a1a", border: "1px solid #444" }}
           title={isFullscreen ? "Exit fullscreen" : "Fullscreen"}
         >
@@ -368,7 +390,7 @@ export function CountryMap3D({ cities }: CountryMap3DProps) {
             type="button"
             onClick={() => handleZoom(1)}
             disabled={zoom >= MAX_ZOOM}
-            className="flex h-8 w-8 items-center justify-center transition-colors disabled:opacity-30"
+            className="flex h-11 w-11 items-center justify-center transition-colors disabled:opacity-30"
             style={{ background: "#f0f0f0", borderBottom: "1px solid #ccc" }}
             title="Zoom in"
           >
@@ -381,7 +403,7 @@ export function CountryMap3D({ cities }: CountryMap3DProps) {
             type="button"
             onClick={() => handleZoom(-1)}
             disabled={zoom <= MIN_ZOOM}
-            className="flex h-8 w-8 items-center justify-center transition-colors disabled:opacity-30"
+            className="flex h-11 w-11 items-center justify-center transition-colors disabled:opacity-30"
             style={{ background: "#f0f0f0" }}
             title="Zoom out"
           >

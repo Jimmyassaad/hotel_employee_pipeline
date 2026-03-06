@@ -237,7 +237,7 @@ function ScrollDots({
 }) {
   return (
     <nav
-      className="fixed top-1/2 -translate-y-1/2 z-50 flex flex-col items-center"
+      className="fixed top-1/2 -translate-y-1/2 z-50 flex-col items-center hidden sm:flex"
       style={{ right: "var(--dot-offset-right)", gap: "var(--dot-gap)" }}
     >
       {Array.from({ length: count }, (_, i) => (
@@ -246,11 +246,11 @@ function ScrollDots({
           type="button"
           onClick={() => onDotClick(i)}
           className="group relative flex items-center justify-center"
-          style={{ width: "20px", height: "20px" }}
+          style={{ width: "44px", height: "44px" }}
           aria-label={`Go to ${labels[i]}`}
         >
           <span
-            className="absolute right-7 whitespace-nowrap bg-background-elevated border border-border px-2 py-1 text-primary opacity-0 pointer-events-none group-hover:opacity-100 transition-opacity font-mono"
+            className="absolute right-8 whitespace-nowrap bg-background-elevated border border-border px-2 py-1 text-primary opacity-0 pointer-events-none group-hover:opacity-100 transition-opacity font-mono"
             style={{ fontSize: "var(--dot-tooltip-size, 10px)" }}
           >
             {labels[i]}
@@ -308,39 +308,39 @@ export default function DashboardPage() {
 
       <main
         ref={scrollRef}
-        className="h-screen overflow-y-auto snap-y snap-mandatory"
+        className="h-[100dvh] overflow-y-auto snap-y snap-mandatory"
       >
         {/* Section 0: Hero / Title */}
         <section
           data-section
           data-section-index={0}
-          className="relative h-screen snap-start flex items-center justify-center"
+          className="relative min-h-[100dvh] snap-start flex items-center justify-center py-16 px-4"
         >
           <div className="flex flex-col items-center text-center">
-            <p className="font-mono text-section-label uppercase tracking-widest text-primary-muted mb-6">
+            <p className="font-mono text-section-label uppercase tracking-widest text-primary-muted mb-4 sm:mb-6 text-[10px] sm:text-xs">
               Sales &amp; Groups CRM
             </p>
-            <h1 className="font-serif text-display text-primary">
+            <h1 className="font-serif text-3xl sm:text-display text-primary leading-tight">
               Hotel Employee Pipeline
             </h1>
-            <div className="mt-12 flex items-center gap-6">
+            <div className="mt-8 sm:mt-12 flex flex-wrap items-center justify-center gap-4 sm:gap-6">
               <button
                 type="button"
                 onClick={() => scrollToSection(1)}
-                className="border border-accent bg-accent/10 px-8 py-3 font-mono text-body-sm uppercase tracking-wider text-accent transition-colors duration-hover hover:bg-accent/20"
+                className="border border-accent bg-accent/10 px-6 sm:px-8 py-3 font-mono text-body-sm uppercase tracking-wider text-accent transition-colors duration-hover hover:bg-accent/20 min-w-[130px]"
               >
                 Dashboard
               </button>
               <Link
                 href="/crm"
-                className="border border-border px-8 py-3 font-mono text-body-sm uppercase tracking-wider text-primary-muted transition-colors duration-hover hover:border-primary-muted hover:text-primary"
+                className="border border-border px-6 sm:px-8 py-3 font-mono text-body-sm uppercase tracking-wider text-primary-muted transition-colors duration-hover hover:border-primary-muted hover:text-primary min-w-[130px] text-center"
               >
                 CRM
               </Link>
             </div>
           </div>
 
-          <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-primary-muted/40 animate-bounce">
+          <div className="absolute bottom-6 sm:bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-primary-muted/40 animate-bounce">
             <svg
               width="20"
               height="20"
@@ -362,20 +362,20 @@ export default function DashboardPage() {
         <section
           data-section
           data-section-index={1}
-          className="relative h-screen snap-start flex items-center"
+          className="relative min-h-[100dvh] snap-start flex items-center py-12 sm:py-16"
         >
           <div className="mx-auto w-full max-w-content px-4 sm:px-6 lg:px-8">
-            <header className="mb-16">
-              <h1 className="font-serif text-display text-primary">
+            <header className="mb-8 sm:mb-12 lg:mb-16">
+              <h1 className="font-serif text-2xl sm:text-display text-primary">
                 Dashboard
               </h1>
-              <p className="mt-3 text-body text-primary-muted">
+              <p className="mt-2 sm:mt-3 text-body text-primary-muted">
                 Sales & Groups CRM{" "}
                 <span className="italic text-accent">Overview</span>
               </p>
             </header>
 
-            <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-4">
+            <div className="grid grid-cols-2 gap-6 sm:gap-8 lg:grid-cols-4">
               <KpiCard
                 label="Total Employees"
                 value={formatNumber(agg.totals.employees)}
@@ -411,7 +411,7 @@ export default function DashboardPage() {
         <section
           data-section
           data-section-index={2}
-          className="h-screen snap-start flex items-center"
+          className="min-h-[100dvh] snap-start flex items-center py-12 sm:py-16"
         >
           <div className="mx-auto w-full max-w-content px-4 sm:px-6 lg:px-8">
             <SectionHeader
@@ -423,7 +423,7 @@ export default function DashboardPage() {
               }
               description="Headcount by country"
             />
-            <div className="h-[calc(100vh-220px)] max-h-[600px]">
+            <div className="h-[55vh] sm:h-[calc(100dvh-220px)] max-h-[600px]">
               <CountryBarChart data={countryChartData} />
             </div>
           </div>
@@ -433,7 +433,7 @@ export default function DashboardPage() {
         <section
           data-section
           data-section-index={3}
-          className="h-screen snap-start flex items-center"
+          className="min-h-[100dvh] snap-start flex items-center py-12 sm:py-16"
         >
           <div className="mx-auto w-full max-w-content px-4 sm:px-6 lg:px-8">
             <div className="grid gap-8 lg:grid-cols-2">
@@ -442,16 +442,16 @@ export default function DashboardPage() {
                   title="Sales vs Groups"
                   description="Category split"
                 />
-                <div className="h-[calc(100vh-280px)] max-h-[500px]">
+                <div className="h-[40vh] sm:h-[calc(50dvh-120px)] max-h-[500px] min-h-[260px]">
                   <CategoryDonutChart data={categoryChartData} />
                 </div>
               </div>
               <div>
                 <SectionHeader
-                  title="Top 10 Hotels by Employee Count"
+                  title="Top 10 Hotels"
                   description="Highest headcount"
                 />
-                <div className="h-[calc(100vh-280px)] max-h-[500px]">
+                <div className="h-[40vh] sm:h-[calc(50dvh-120px)] max-h-[500px] min-h-[260px]">
                   <TopHotelsChart data={topHotels} />
                 </div>
               </div>
@@ -463,17 +463,17 @@ export default function DashboardPage() {
         <section
           data-section
           data-section-index={4}
-          className="h-screen snap-start flex items-center"
+          className="min-h-[100dvh] snap-start flex items-center py-12 sm:py-16"
         >
           <div className="mx-auto w-full max-w-content px-4 sm:px-6 lg:px-8">
             <div className="overflow-hidden border border-border">
-              <div className="px-5 pt-5">
+              <div className="px-4 sm:px-5 pt-4 sm:pt-5">
                 <SectionHeader
                   title="Global Employee Distribution"
                   description="Employees by city"
                 />
               </div>
-              <div className="h-[calc(100vh-240px)] max-h-[600px]">
+              <div className="h-[55vh] sm:h-[calc(100dvh-240px)] max-h-[600px] min-h-[280px]">
                 <CountryMap3D cities={cityMapData} />
               </div>
             </div>

@@ -34,7 +34,7 @@
     --dot-size: 10px;
     --dot-gap: 14px;
     --dot-border: 1.5px;
-    --dot-offset-right: 24px;
+    --dot-offset-right: 16px;
     --dot-glow-spread: 10px;
 
     --progress-height: 3px;
@@ -47,6 +47,11 @@
 
   body {
     @apply bg-background text-primary antialiased;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  button, a {
+    touch-action: manipulation;
   }
 
   * {
