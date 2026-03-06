@@ -1,0 +1,77 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --ink-black: #0a0a0a;
+    --dark-grey: #1a1a1a;
+    --mid-dark: #141414;
+    --newsprint: #f8f6f1;
+    --newsprint-dim: rgba(248, 246, 241, 0.9);
+    --cyan-accent: #00a3c4;
+    --cyan-glow: rgba(0, 163, 196, 0.6);
+    --cyan-bright: #00d4ff;
+    --text-grey: #888888;
+    --rule-grey: #333333;
+    --leaked-red: #c44a00;
+    --leaked-glow: rgba(196, 74, 0, 0.4);
+
+    --hero-headline: clamp(48px, 8vw, 96px);
+    --section-headline: clamp(36px, 5vw, 64px);
+    --body-size: clamp(18px, 2vw, 22px);
+    --giant-stat: clamp(120px, 25vw, 300px);
+
+    --section-padding-top: 100px;
+    --section-padding-sides: 100px;
+    --section-padding-left: 60px;
+    --section-padding-mobile: 24px;
+
+    --reveal-distance: 40px;
+    --reveal-duration: 0.8s;
+    --stagger-base: 0.1s;
+
+    --dot-size: 10px;
+    --dot-gap: 14px;
+    --dot-border: 1.5px;
+    --dot-offset-right: 24px;
+    --dot-glow-spread: 10px;
+
+    --progress-height: 3px;
+    --progress-glow: 12px;
+
+    --table-header-bg: rgba(255, 255, 255, 0.04);
+    --table-row-hover: rgba(255, 255, 255, 0.03);
+    --chart-grid: rgba(255, 255, 255, 0.06);
+  }
+
+  body {
+    @apply bg-background text-primary antialiased;
+  }
+
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: #333333 transparent;
+  }
+
+  *::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+  *::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  *::-webkit-scrollbar-thumb {
+    background: #333333;
+    border-radius: 3px;
+  }
+  *::-webkit-scrollbar-thumb:hover {
+    background: #555555;
+  }
+}
+
+@layer utilities {
+  .text-newsprint-dim {
+    color: var(--newsprint-dim);
+  }
+}

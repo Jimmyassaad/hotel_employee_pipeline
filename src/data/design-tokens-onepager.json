@@ -1,0 +1,1186 @@
+{
+  "_meta": {
+    "name": "Dark OnePager Design System",
+    "version": "3.0.0",
+    "updated": "2026-03-04",
+    "description": "Cinematic dark theme for presentation documents, commission guides, and scrollytelling pages."
+  },
+  "foundation": {
+    "colours": {
+      "core": {
+        "ink-black": {
+          "value": "#0a0a0a",
+          "var": "--ink-black",
+          "usage": "Page background"
+        },
+        "dark-grey": {
+          "value": "#1a1a1a",
+          "var": "--dark-grey",
+          "usage": "Cards, panels, tooltips"
+        },
+        "mid-dark": {
+          "value": "#141414",
+          "var": "--mid-dark",
+          "usage": "Secondary panels"
+        },
+        "newsprint": {
+          "value": "#f8f6f1",
+          "var": "--newsprint",
+          "usage": "Headlines, primary text"
+        },
+        "newsprint-dim": {
+          "value": "rgba(248,246,241,0.9)",
+          "var": "--newsprint-dim",
+          "usage": "Body text",
+          "derived": true
+        },
+        "cyan-accent": {
+          "value": "#00a3c4",
+          "var": "--cyan-accent",
+          "usage": "THE accent colour"
+        },
+        "cyan-glow": {
+          "value": "rgba(0,163,196,0.6)",
+          "var": "--cyan-glow",
+          "usage": "Glow shadows",
+          "derived": true
+        },
+        "cyan-bright": {
+          "value": "#00d4ff",
+          "var": "--cyan-bright",
+          "usage": "Gradients, hover states"
+        },
+        "text-grey": {
+          "value": "#888888",
+          "var": "--text-grey",
+          "usage": "Secondary text, labels"
+        },
+        "rule-grey": {
+          "value": "#333333",
+          "var": "--rule-grey",
+          "usage": "Borders, dividers"
+        }
+      },
+      "semantic": {
+        "leaked-red": {
+          "value": "#c44a00",
+          "var": "--leaked-red",
+          "usage": "Commission leak"
+        },
+        "leaked-glow": {
+          "value": "rgba(196,74,0,0.4)",
+          "var": "--leaked-glow",
+          "usage": "Leaked stat shadows",
+          "derived": true
+        },
+        "positive": {
+          "value": "#42be65",
+          "var": null,
+          "usage": "YoY increases"
+        },
+        "negative": {
+          "value": "#da1e28",
+          "var": null,
+          "usage": "YoY decreases"
+        }
+      },
+      "data": {
+        "hotelmap": {
+          "value": "#00a3c4",
+          "var": "--col-hm",
+          "usage": "HotelMap events"
+        },
+        "agency": {
+          "value": "#be95ff",
+          "var": "--col-agency",
+          "usage": "Housing Agency events"
+        },
+        "duplos": {
+          "value": "#f1c21b",
+          "var": "--col-duplo",
+          "usage": "Duplos events"
+        },
+        "links": {
+          "value": "#ee5396",
+          "var": "--col-links",
+          "usage": "Direct Links events"
+        },
+        "nothing": {
+          "value": "#555555",
+          "var": "--col-none",
+          "usage": "No booking events"
+        }
+      },
+      "regions": {
+        "apac": {
+          "value": "#00a3c4",
+          "usage": "Asia-Pacific"
+        },
+        "americas": {
+          "value": "#f1c21b",
+          "usage": "The Americas"
+        },
+        "europe": {
+          "value": "#be95ff",
+          "usage": "Europe"
+        },
+        "imea": {
+          "value": "#ee5396",
+          "usage": "India, Middle East & Africa"
+        }
+      }
+    },
+    "typography": {
+      "families": {
+        "headline": {
+          "value": "'Playfair Display', Georgia, serif",
+          "label": "Headlines"
+        },
+        "body": {
+          "value": "'Source Serif 4', Georgia, serif",
+          "label": "Body text"
+        },
+        "data": {
+          "value": "'JetBrains Mono', monospace",
+          "label": "Data, labels"
+        }
+      }
+    },
+    "formatting": {
+      "number-separator": {
+        "value": ",",
+        "label": "Thousands separator"
+      },
+      "locale": {
+        "value": "en-GB",
+        "label": "Number/date locale"
+      },
+      "currency": {
+        "value": "£",
+        "label": "Currency symbol"
+      }
+    }
+  },
+  "html": {
+    "typography": {
+      "scale": {
+        "hero-headline": {
+          "font": "headline",
+          "weight": 700,
+          "size": "clamp(48px, 8vw, 96px)",
+          "lineHeight": 1.05,
+          "letterSpacing": "-0.02em"
+        },
+        "section-headline": {
+          "font": "headline",
+          "weight": 700,
+          "size": "clamp(36px, 5vw, 64px)",
+          "lineHeight": 1.1,
+          "letterSpacing": "-0.02em"
+        },
+        "body": {
+          "font": "body",
+          "weight": 400,
+          "size": "clamp(18px, 2vw, 22px)",
+          "lineHeight": 1.65,
+          "letterSpacing": "0"
+        },
+        "giant-stat": {
+          "font": "headline",
+          "weight": 700,
+          "size": "clamp(120px, 25vw, 300px)",
+          "lineHeight": 0.85,
+          "letterSpacing": "0"
+        },
+        "section-label": {
+          "font": "data",
+          "weight": 400,
+          "size": "12px",
+          "lineHeight": 1,
+          "letterSpacing": "0.3em",
+          "transform": "uppercase"
+        },
+        "stat-label": {
+          "font": "data",
+          "weight": 400,
+          "size": "11px",
+          "lineHeight": 1,
+          "letterSpacing": "0.15em",
+          "transform": "uppercase"
+        }
+      }
+    },
+    "layout": {
+      "page": {
+        "section-padding-top": {
+          "value": "100px",
+          "label": "Section top padding (desktop)"
+        },
+        "section-padding-sides": {
+          "value": "100px",
+          "label": "Section side padding (desktop)"
+        },
+        "section-padding-left": {
+          "value": "60px",
+          "label": "Section left padding (nav dot space)"
+        },
+        "section-padding-mobile": {
+          "value": "24px",
+          "label": "Section side padding (mobile)"
+        },
+        "section-padding-short": {
+          "value": "60px",
+          "label": "Short section padding"
+        },
+        "section-padding-tall": {
+          "value": "140px",
+          "label": "Tall section padding"
+        },
+        "content-max-width": {
+          "value": "1200px",
+          "label": "Main content max-width"
+        },
+        "body-max-width": {
+          "value": "650px",
+          "label": "Body text max-width"
+        }
+      },
+      "containers": {
+        "chart-max-width": {
+          "value": "900px",
+          "label": "Charts and diagrams"
+        },
+        "card-grid-max-width": {
+          "value": "1100px",
+          "label": "Card grids and checklists"
+        },
+        "formula-max-width": {
+          "value": "800px",
+          "label": "Formula and gap pair"
+        },
+        "staircase-max-width": {
+          "value": "900px",
+          "label": "Revenue staircase"
+        },
+        "map-sidebar-width": {
+          "value": "280px",
+          "label": "Constellation map sidebar"
+        }
+      },
+      "grids": {
+        "asymmetric-split": {
+          "value": "1fr 1.2fr",
+          "label": "Asymmetric layout ratio"
+        },
+        "asymmetric-gap": {
+          "value": "100px",
+          "label": "Asymmetric column gap"
+        },
+        "region-cards-gap": {
+          "value": "25px",
+          "label": "Region card grid gap"
+        },
+        "ratio-pair-gap": {
+          "value": "20px",
+          "label": "Ratio block gap"
+        },
+        "rb-card-gap": {
+          "value": "24px",
+          "label": "Room block card gap"
+        },
+        "checklist-gap": {
+          "value": "16px",
+          "label": "Checklist item gap"
+        },
+        "stats-gap": {
+          "value": "80px",
+          "label": "Supporting stats gap"
+        },
+        "mosaic-columns": {
+          "value": "5",
+          "label": "City mosaic columns"
+        },
+        "mosaic-gap": {
+          "value": "2px",
+          "label": "City mosaic gap"
+        },
+        "staircase-gap": {
+          "value": "3px",
+          "label": "Staircase step gap"
+        }
+      },
+      "vertical-rhythm": {
+        "section-label-mb": {
+          "value": "20px",
+          "label": "Section label → headline"
+        },
+        "headline-mb": {
+          "value": "30px",
+          "label": "Headline → body text"
+        },
+        "body-mb": {
+          "value": "30px",
+          "label": "Body text → next element"
+        },
+        "component-mb": {
+          "value": "50px",
+          "label": "Between major components"
+        },
+        "supporting-stats-mt": {
+          "value": "60px",
+          "label": "Giant stat → supporting stats"
+        },
+        "timeline-mt": {
+          "value": "60px",
+          "label": "Content → timeline"
+        }
+      },
+      "borders": {
+        "default-width": {
+          "value": "1px",
+          "label": "Standard borders"
+        },
+        "accent-width": {
+          "value": "2px",
+          "label": "Accent/hover borders"
+        },
+        "callout-left": {
+          "value": "4px",
+          "label": "Callout left border"
+        },
+        "card-hover": {
+          "value": "2px",
+          "label": "Card hover border"
+        }
+      },
+      "mobile": {
+        "section-padding-top": {
+          "value": "80px",
+          "label": "Section top padding"
+        },
+        "section-padding-sides": {
+          "value": "24px",
+          "label": "Section side padding"
+        },
+        "section-short-padding": {
+          "value": "50px",
+          "label": "Short section padding"
+        },
+        "interstitial-padding": {
+          "value": "28px",
+          "label": "Interstitial inner padding"
+        },
+        "headline-size": {
+          "value": "clamp(32px, 10vw, 48px)",
+          "label": "Headline font size"
+        },
+        "section-headline-size": {
+          "value": "clamp(28px, 8vw, 40px)",
+          "label": "Section headline size"
+        },
+        "body-size": {
+          "value": "16px",
+          "label": "Body text font size"
+        },
+        "section-label-size": {
+          "value": "10px",
+          "label": "Section label font size"
+        },
+        "giant-stat-size": {
+          "value": "clamp(80px, 25vw, 160px)",
+          "label": "Giant stat font size"
+        },
+        "supporting-stat-size": {
+          "value": "48px",
+          "label": "Supporting stat number"
+        },
+        "asymmetric-gap": {
+          "value": "40px",
+          "label": "Asymmetric gap (stacked)"
+        },
+        "ratio-pair-gap": {
+          "value": "16px",
+          "label": "Ratio pair gap (stacked)"
+        },
+        "rb-card-gap": {
+          "value": "20px",
+          "label": "Room block gap (stacked)"
+        },
+        "mosaic-columns": {
+          "value": "2",
+          "label": "City mosaic columns"
+        },
+        "stats-direction": {
+          "value": "column",
+          "label": "Supporting stats direction"
+        },
+        "stats-gap": {
+          "value": "24px",
+          "label": "Supporting stats gap"
+        },
+        "numbered-item-num-size": {
+          "value": "32px",
+          "label": "Numbered item number"
+        },
+        "staircase-columns": {
+          "value": "1",
+          "label": "Staircase columns"
+        },
+        "gap-pair-columns": {
+          "value": "1",
+          "label": "Performance gap columns"
+        },
+        "timeline-direction": {
+          "value": "column",
+          "label": "Timeline direction"
+        }
+      }
+    },
+    "breakpoints": {
+      "mobile": {
+        "value": "768px",
+        "label": "Primary mobile breakpoint"
+      },
+      "map-stack": {
+        "value": "900px",
+        "label": "Map sidebar stacks above"
+      },
+      "extra-small": {
+        "value": "420px",
+        "label": "Extra-small phones"
+      }
+    },
+    "animation": {
+      "reveal-distance": {
+        "value": "40px",
+        "label": "Scroll reveal distance"
+      },
+      "reveal-distance-mobile": {
+        "value": "20px",
+        "label": "Scroll reveal (mobile)"
+      },
+      "reveal-duration": {
+        "value": "0.8s",
+        "label": "Reveal transition time"
+      },
+      "stagger-base": {
+        "value": "0.1s",
+        "label": "Stagger delay increment"
+      }
+    },
+    "tables": {
+      "header-bg": {
+        "value": "rgba(255,255,255,0.04)",
+        "label": "Header row background"
+      },
+      "header-size": {
+        "value": "10px",
+        "label": "Header font size"
+      },
+      "header-letter-spacing": {
+        "value": "0.15em",
+        "label": "Header letter spacing"
+      },
+      "header-padding": {
+        "value": "12px 16px",
+        "label": "Header cell padding"
+      },
+      "header-border-bottom": {
+        "value": "2px",
+        "label": "Header bottom border"
+      },
+      "cell-size": {
+        "value": "14px",
+        "label": "Body cell font size"
+      },
+      "cell-padding": {
+        "value": "12px 16px",
+        "label": "Body cell padding"
+      },
+      "numeric-align": {
+        "value": "right",
+        "label": "Numeric column alignment"
+      },
+      "footer-border-top": {
+        "value": "2px",
+        "label": "Footer/total row top border"
+      },
+      "row-hover-bg": {
+        "value": "rgba(255,255,255,0.03)",
+        "label": "Row hover tint"
+      },
+      "row-divider": {
+        "value": "1px",
+        "label": "Row divider thickness"
+      },
+      "min-column-width": {
+        "value": "80px",
+        "label": "Minimum column width"
+      }
+    },
+    "charts": {
+      "grid-colour": {
+        "value": "rgba(255,255,255,0.06)",
+        "label": "Chart gridline colour"
+      },
+      "grid-width": {
+        "value": "0.5",
+        "label": "Gridline stroke width"
+      },
+      "axis-label-size": {
+        "value": "10px",
+        "label": "Axis label font size"
+      },
+      "bar-height": {
+        "value": "40px",
+        "label": "Stacked bar track height"
+      },
+      "bar-label-width": {
+        "value": "140px",
+        "label": "Bar label column (desktop)"
+      },
+      "bar-label-width-mobile": {
+        "value": "60px",
+        "label": "Bar label column (mobile)"
+      },
+      "dot-radius-min": {
+        "value": "3",
+        "label": "Scatter dot minimum radius"
+      },
+      "dot-radius-max": {
+        "value": "20",
+        "label": "Scatter dot maximum radius"
+      },
+      "now-indicator-width": {
+        "value": "2px",
+        "label": "Calendar 'now' line width"
+      },
+      "canvas-height-desktop": {
+        "value": "450px",
+        "label": "Canvas chart height (desktop)"
+      },
+      "canvas-height-mobile": {
+        "value": "350px",
+        "label": "Canvas chart height (mobile)"
+      },
+      "legend-item-size": {
+        "value": "12px",
+        "label": "Legend swatch size"
+      },
+      "legend-font-size": {
+        "value": "11px",
+        "label": "Legend label font size"
+      }
+    },
+    "tooltips": {
+      "bg": {
+        "value": "#1a1a1a",
+        "label": "Tooltip background"
+      },
+      "border": {
+        "value": "1px solid #333",
+        "label": "Tooltip border"
+      },
+      "padding": {
+        "value": "12px 16px",
+        "label": "Tooltip padding"
+      },
+      "font-size": {
+        "value": "11px",
+        "label": "Tooltip font size"
+      },
+      "shadow": {
+        "value": "0 4px 20px rgba(0,0,0,0.5)",
+        "label": "Tooltip box shadow"
+      },
+      "radius": {
+        "value": "0",
+        "label": "Tooltip border radius"
+      }
+    },
+    "particles": {
+      "count-desktop": {
+        "value": "100",
+        "label": "Particle count (desktop)"
+      },
+      "count-mobile": {
+        "value": "40",
+        "label": "Particle count (mobile)"
+      },
+      "radius-min": {
+        "value": "0.5",
+        "label": "Minimum particle radius"
+      },
+      "radius-max": {
+        "value": "2.5",
+        "label": "Maximum particle radius"
+      },
+      "speed": {
+        "value": "0.3",
+        "label": "Drift speed multiplier"
+      },
+      "cyan-probability": {
+        "value": "0.3",
+        "label": "Fraction of cyan particles"
+      },
+      "opacity-min": {
+        "value": "0.1",
+        "label": "Minimum particle opacity"
+      },
+      "opacity-max": {
+        "value": "0.6",
+        "label": "Maximum particle opacity"
+      }
+    },
+    "chrome": {
+      "progress-height": {
+        "value": "3px",
+        "label": "Progress bar height"
+      },
+      "progress-glow": {
+        "value": "12px",
+        "label": "Progress bar glow spread"
+      },
+      "progress-transition": {
+        "value": "0.1s",
+        "label": "Progress bar smoothing"
+      },
+      "dot-size": {
+        "value": "10px",
+        "label": "Nav dot diameter"
+      },
+      "dot-gap": {
+        "value": "14px",
+        "label": "Nav dot spacing"
+      },
+      "dot-border": {
+        "value": "1.5px",
+        "label": "Nav dot border width"
+      },
+      "dot-offset-right": {
+        "value": "24px",
+        "label": "Nav dot right offset"
+      },
+      "dot-glow-spread": {
+        "value": "10px",
+        "label": "Active dot glow spread"
+      },
+      "dot-tooltip-size": {
+        "value": "10px",
+        "label": "Dot tooltip font size"
+      },
+      "scroll-hint-size": {
+        "value": "11px",
+        "label": "Scroll hint font size"
+      },
+      "pulse-duration": {
+        "value": "2s",
+        "label": "Scroll hint pulse timing"
+      },
+      "pulse-opacity-min": {
+        "value": "0.5",
+        "label": "Pulse minimum opacity"
+      },
+      "pulse-opacity-max": {
+        "value": "1.0",
+        "label": "Pulse maximum opacity"
+      }
+    },
+    "interactive": {
+      "link-colour": {
+        "value": "inherit",
+        "label": "Link colour (inherits cyan)"
+      },
+      "link-decoration": {
+        "value": "underline",
+        "label": "Link text decoration"
+      },
+      "focus-ring": {
+        "value": "2px solid #00a3c4",
+        "label": "Focus ring (accessibility)"
+      },
+      "card-hover-glow": {
+        "value": "0 0 60px rgba(0,163,196,0.12)",
+        "label": "Card hover glow"
+      },
+      "card-shadow": {
+        "value": "none",
+        "label": "Card resting shadow"
+      },
+      "card-radius": {
+        "value": "0",
+        "label": "Card border radius"
+      },
+      "transition-speed": {
+        "value": "0.3s",
+        "label": "Default hover transition"
+      },
+      "hover-border-colour": {
+        "value": "#00a3c4",
+        "label": "Hover border colour"
+      }
+    },
+    "observer": {
+      "reveal-threshold": {
+        "value": "0.15",
+        "label": "Section reveal trigger"
+      },
+      "hero-threshold": {
+        "value": "0.7",
+        "label": "Hero section trigger"
+      }
+    },
+    "sparklines": {
+      "height": {
+        "value": "16px",
+        "label": "Sparkline height (word-sized)"
+      },
+      "width": {
+        "value": "64px",
+        "label": "Default sparkline width"
+      },
+      "stroke-width": {
+        "value": "1.5",
+        "label": "Line thickness"
+      },
+      "stroke-colour": {
+        "value": "#00a3c4",
+        "label": "Line colour (inherits accent)"
+      },
+      "fill": {
+        "value": "rgba(0,163,196,0.08)",
+        "label": "Area fill under line"
+      },
+      "dot-radius": {
+        "value": "2",
+        "label": "Endpoint dot size"
+      },
+      "baseline-colour": {
+        "value": "rgba(255,255,255,0.1)",
+        "label": "Zero/reference line"
+      },
+      "negative-colour": {
+        "value": "#c44a00",
+        "label": "Colour for declining trend"
+      }
+    },
+    "annotations": {
+      "line-colour": {
+        "value": "rgba(255,255,255,0.25)",
+        "label": "Callout connector line"
+      },
+      "line-width": {
+        "value": "1",
+        "label": "Connector line thickness"
+      },
+      "line-style": {
+        "value": "solid",
+        "label": "Connector style (solid/dashed)"
+      },
+      "label-size": {
+        "value": "10px",
+        "label": "Annotation text size"
+      },
+      "label-colour": {
+        "value": "#888",
+        "label": "Annotation text colour"
+      },
+      "label-weight": {
+        "value": "400",
+        "label": "Annotation text weight"
+      },
+      "bg": {
+        "value": "rgba(26,26,26,0.9)",
+        "label": "Callout background"
+      },
+      "border": {
+        "value": "1px solid #333",
+        "label": "Callout border"
+      },
+      "padding": {
+        "value": "4px 8px",
+        "label": "Callout padding"
+      }
+    }
+  },
+  "docx": {
+    "page": {
+      "size": {
+        "value": "A4",
+        "label": "Page size"
+      },
+      "orientation": {
+        "value": "portrait",
+        "label": "Orientation"
+      },
+      "margin-top": {
+        "value": "25mm",
+        "label": "Top margin"
+      },
+      "margin-bottom": {
+        "value": "25mm",
+        "label": "Bottom margin"
+      },
+      "margin-left": {
+        "value": "25mm",
+        "label": "Left margin"
+      },
+      "margin-right": {
+        "value": "25mm",
+        "label": "Right margin"
+      }
+    },
+    "headings": {
+      "h1-size": {
+        "value": "28pt",
+        "label": "Heading 1 size"
+      },
+      "h1-weight": {
+        "value": "700",
+        "label": "Heading 1 weight"
+      },
+      "h1-spacing-after": {
+        "value": "12pt",
+        "label": "Heading 1 space after"
+      },
+      "h1-colour": {
+        "value": "inherit",
+        "label": "Heading 1 colour (inherit = newsprint)"
+      },
+      "h2-size": {
+        "value": "22pt",
+        "label": "Heading 2 size"
+      },
+      "h2-weight": {
+        "value": "700",
+        "label": "Heading 2 weight"
+      },
+      "h2-spacing-after": {
+        "value": "10pt",
+        "label": "Heading 2 space after"
+      },
+      "h3-size": {
+        "value": "16pt",
+        "label": "Heading 3 size"
+      },
+      "h3-weight": {
+        "value": "600",
+        "label": "Heading 3 weight"
+      },
+      "h3-spacing-after": {
+        "value": "8pt",
+        "label": "Heading 3 space after"
+      },
+      "accent-underline": {
+        "value": "true",
+        "label": "Cyan underline on H1"
+      }
+    },
+    "body": {
+      "font-size": {
+        "value": "11pt",
+        "label": "Body font size"
+      },
+      "line-height": {
+        "value": "1.6",
+        "label": "Line height"
+      },
+      "paragraph-spacing": {
+        "value": "6pt",
+        "label": "Space between paragraphs"
+      },
+      "first-indent": {
+        "value": "0pt",
+        "label": "First-line indent"
+      }
+    },
+    "tables": {
+      "header-bg": {
+        "value": "#00a3c4",
+        "label": "Table header background"
+      },
+      "header-text": {
+        "value": "#ffffff",
+        "label": "Table header text colour"
+      },
+      "header-size": {
+        "value": "9pt",
+        "label": "Table header font size"
+      },
+      "cell-size": {
+        "value": "10pt",
+        "label": "Table cell font size"
+      },
+      "cell-padding": {
+        "value": "4pt",
+        "label": "Cell padding"
+      },
+      "border-colour": {
+        "value": "#cccccc",
+        "label": "Table border colour"
+      },
+      "alt-row-bg": {
+        "value": "#f5f5f5",
+        "label": "Alternating row background"
+      }
+    },
+    "headers-footers": {
+      "header-text": {
+        "value": "Atelier by Informa × HotelMap",
+        "label": "Header text"
+      },
+      "header-size": {
+        "value": "8pt",
+        "label": "Header font size"
+      },
+      "footer-text": {
+        "value": "Confidential",
+        "label": "Footer text"
+      },
+      "footer-size": {
+        "value": "8pt",
+        "label": "Footer font size"
+      },
+      "show-page-numbers": {
+        "value": "true",
+        "label": "Show page numbers"
+      },
+      "page-number-format": {
+        "value": "Page {n} of {total}",
+        "label": "Page number format"
+      }
+    }
+  },
+  "pdf": {
+    "page": {
+      "size": {
+        "value": "A4",
+        "label": "Page size"
+      },
+      "orientation": {
+        "value": "portrait",
+        "label": "Orientation"
+      },
+      "margin-top": {
+        "value": "20mm",
+        "label": "Top margin"
+      },
+      "margin-bottom": {
+        "value": "20mm",
+        "label": "Bottom margin"
+      },
+      "margin-left": {
+        "value": "20mm",
+        "label": "Left margin"
+      },
+      "margin-right": {
+        "value": "20mm",
+        "label": "Right margin"
+      },
+      "bleed": {
+        "value": "0mm",
+        "label": "Bleed area"
+      }
+    },
+    "invoice": {
+      "logo-height": {
+        "value": "40px",
+        "label": "Logo height"
+      },
+      "line-item-height": {
+        "value": "28px",
+        "label": "Line item row height"
+      },
+      "total-font-size": {
+        "value": "14pt",
+        "label": "Total amount font size"
+      },
+      "total-weight": {
+        "value": "700",
+        "label": "Total amount weight"
+      },
+      "due-date-colour": {
+        "value": "#c44a00",
+        "label": "Due date highlight colour"
+      },
+      "paid-colour": {
+        "value": "#42be65",
+        "label": "Paid stamp colour"
+      }
+    },
+    "contract": {
+      "clause-indent": {
+        "value": "20px",
+        "label": "Clause indent"
+      },
+      "clause-numbering": {
+        "value": "1.1.1",
+        "label": "Numbering format"
+      },
+      "signature-block-width": {
+        "value": "200px",
+        "label": "Signature block width"
+      },
+      "signature-line-colour": {
+        "value": "#333333",
+        "label": "Signature line colour"
+      }
+    },
+    "watermark": {
+      "text": {
+        "value": "DRAFT",
+        "label": "Watermark text"
+      },
+      "opacity": {
+        "value": "0.06",
+        "label": "Watermark opacity"
+      },
+      "rotation": {
+        "value": "-35deg",
+        "label": "Watermark rotation"
+      },
+      "font-size": {
+        "value": "72pt",
+        "label": "Watermark font size"
+      },
+      "colour": {
+        "value": "#888888",
+        "label": "Watermark colour"
+      }
+    },
+    "headers-footers": {
+      "header-text": {
+        "value": "Atelier by Informa × HotelMap",
+        "label": "Header text"
+      },
+      "footer-text": {
+        "value": "Confidential",
+        "label": "Footer text"
+      },
+      "show-page-numbers": {
+        "value": "true",
+        "label": "Show page numbers"
+      }
+    }
+  },
+  "xlsx": {
+    "headers": {
+      "row-height": {
+        "value": "28px",
+        "label": "Header row height"
+      },
+      "font-size": {
+        "value": "10pt",
+        "label": "Header font size"
+      },
+      "font-weight": {
+        "value": "700",
+        "label": "Header font weight"
+      },
+      "bg-colour": {
+        "value": "#00a3c4",
+        "label": "Header background"
+      },
+      "text-colour": {
+        "value": "#ffffff",
+        "label": "Header text colour"
+      },
+      "border-bottom": {
+        "value": "2px solid #00a3c4",
+        "label": "Header bottom border"
+      }
+    },
+    "cells": {
+      "default-width": {
+        "value": "120px",
+        "label": "Default column width"
+      },
+      "row-height": {
+        "value": "22px",
+        "label": "Data row height"
+      },
+      "font-size": {
+        "value": "10pt",
+        "label": "Cell font size"
+      },
+      "padding": {
+        "value": "4px 8px",
+        "label": "Cell padding"
+      },
+      "border-colour": {
+        "value": "#e0e0e0",
+        "label": "Cell border colour"
+      },
+      "gridline-colour": {
+        "value": "#f0f0f0",
+        "label": "Gridline colour"
+      }
+    },
+    "numbers": {
+      "currency-format": {
+        "value": "£#,##0.00",
+        "label": "Currency format"
+      },
+      "percentage-format": {
+        "value": "0.0%",
+        "label": "Percentage format"
+      },
+      "date-format": {
+        "value": "DD MMM YYYY",
+        "label": "Date format"
+      },
+      "integer-format": {
+        "value": "#,##0",
+        "label": "Integer format"
+      }
+    },
+    "conditionals": {
+      "positive-bg": {
+        "value": "rgba(66,190,101,0.1)",
+        "label": "Positive value background"
+      },
+      "positive-text": {
+        "value": "#15803d",
+        "label": "Positive value text"
+      },
+      "negative-bg": {
+        "value": "rgba(218,30,40,0.1)",
+        "label": "Negative value background"
+      },
+      "negative-text": {
+        "value": "#b91c1c",
+        "label": "Negative value text"
+      },
+      "threshold-warn": {
+        "value": "0.1",
+        "label": "Warning threshold"
+      },
+      "threshold-danger": {
+        "value": "0.05",
+        "label": "Danger threshold"
+      }
+    },
+    "styling": {
+      "alt-row-bg": {
+        "value": "rgba(0,163,196,0.03)",
+        "label": "Alternating row tint"
+      },
+      "freeze-panes": {
+        "value": "A2",
+        "label": "Freeze panes cell"
+      },
+      "auto-filter": {
+        "value": "true",
+        "label": "Auto-filter on headers"
+      },
+      "title-row-height": {
+        "value": "36px",
+        "label": "Title row height"
+      },
+      "title-font-size": {
+        "value": "14pt",
+        "label": "Title font size"
+      }
+    }
+  }
+}

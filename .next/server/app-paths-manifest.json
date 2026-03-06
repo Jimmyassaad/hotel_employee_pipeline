@@ -1,0 +1,4 @@
+{
+  "/crm/page": "app/crm/page.js",
+  "/dashboard/page": "app/dashboard/page.js"
+}

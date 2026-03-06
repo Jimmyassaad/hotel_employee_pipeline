@@ -1,0 +1,2 @@
+{"sessionId":"79ecf9","location":"src/app/page.tsx:Home","message":"Root page executing, about to redirect","data":{"hypothesisId":"B"},"timestamp":1772554393149}
+{"sessionId":"79ecf9","location":"src/app/layout.tsx:RootLayout","message":"RootLayout executing","data":{"hypothesisId":"A"},"timestamp":1772554393152}
